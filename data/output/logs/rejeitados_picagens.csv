@@ -1,0 +1,48 @@
+#	This file was created on Sat Oct 17 12:25:40 WEST 2026.
+"codigo_operador";"data_hora";"tipo_picagem";"validacao_picagem"
+#	The following data was added on Sat Oct 17 13:57:19 WEST 2026.
+#	The following data was added on Sat Oct 17 14:04:56 WEST 2026.
+"0001";"17-10-2026 6h28";"ENTRADA";"Invalido"
+#	The following data was added on Sat Oct 17 14:08:30 WEST 2026.
+#	The following data was added on Sat Oct 17 17:46:41 WEST 2026.
+#	The following data was added on Mon Oct 19 18:46:19 WEST 2026.
+#	The following data was added on Tue Oct 20 00:34:05 WEST 2026.
+"00A1";"20/10/2026 06:28";"ENTRADA";"Invalido"
+"0098";"20-10-2026 6h28";"ENTRADA";"Invalido"
+"0099";"32/13/2026 06:28";"ENTRADA";"Invalido"
+#	The following data was added on Tue Oct 20 00:37:42 WEST 2026.
+"00A1";"20/10/2026 06:28";"ENTRADA";"Invalido"
+"0098";"20-10-2026 6h28";"ENTRADA";"Invalido"
+"0099";"32/13/2026 06:28";"ENTRADA";"Invalido"
+#	The following data was added on Tue Oct 20 00:53:14 WEST 2026.
+"00A1";"20/10/2026 06:28";"ENTRADA";"Invalido"
+"0098";"20-10-2026 6h28";"ENTRADA";"Invalido"
+"0099";"32/13/2026 06:28";"SAIDA";"Invalido"
+"1";"20/10/2026 07:00";"SAIDA";"Invalido"
+"0097";"20/10/2026 25:10";"SAIDA";"Invalido"
+"0096";"20/10/2026 07:00";"PAUSA";"Invalido"
+"0095";;"ENTRADA";"Invalido"
+#	The following data was added on Tue Oct 20 20:07:23 WEST 2026.
+"00A1";"20/10/2026 06:28";"ENTRADA";"Invalido"
+"0098";"20-10-2026 6h28";"ENTRADA";"Invalido"
+"0099";"32/13/2026 06:28";"SAIDA";"Invalido"
+"1";"20/10/2026 07:00";"SAIDA";"Invalido"
+"0097";"20/10/2026 25:10";"SAIDA";"Invalido"
+"0096";"20/10/2026 07:00";"PAUSA";"Invalido"
+"0095";;"ENTRADA";"Invalido"
+#	The following data was added on Wed Oct 21 23:46:59 WEST 2026.
+"00A1";"20/10/2026 06:28";"ENTRADA";"Invalido"
+"0098";"20-10-2026 6h28";"ENTRADA";"Invalido"
+"0099";"32/13/2026 06:28";"SAIDA";"Invalido"
+"1";"20/10/2026 07:00";"SAIDA";"Invalido"
+"0097";"20/10/2026 25:10";"SAIDA";"Invalido"
+"0096";"20/10/2026 07:00";"PAUSA";"Invalido"
+"0095";;"ENTRADA";"Invalido"
+#	The following data was added on Thu Oct 22 00:01:02 WEST 2026.
+"00A1";"20/10/2026 06:28";"ENTRADA";"Invalido"
+"0098";"20-10-2026 6h28";"ENTRADA";"Invalido"
+"0099";"32/13/2026 06:28";"SAIDA";"Invalido"
+"1";"20/10/2026 07:00";"SAIDA";"Invalido"
+"0097";"20/10/2026 25:10";"SAIDA";"Invalido"
+"0096";"20/10/2026 07:00";"PAUSA";"Invalido"
+"0095";;"ENTRADA";"Invalido"

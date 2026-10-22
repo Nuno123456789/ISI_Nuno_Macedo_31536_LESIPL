@@ -1,0 +1,34 @@
+#	This file was created on Sat Oct 17 12:25:40 WEST 2026.
+"codigo_op";"referencia";"codigo_maquina";"quantidade_planeada";"ciclo_ideal_segundos";"validacao_maquina"
+#	The following data was added on Sat Oct 17 13:57:19 WEST 2026.
+#	The following data was added on Sat Oct 17 14:04:56 WEST 2026.
+#	The following data was added on Sat Oct 17 14:08:30 WEST 2026.
+#	The following data was added on Sat Oct 17 17:46:41 WEST 2026.
+#	The following data was added on Mon Oct 19 18:46:20 WEST 2026.
+#	The following data was added on Tue Oct 20 00:37:43 WEST 2026.
+"2609397";"REF-D400";"M01";500;12;"Invalido"
+"2609398";"REF-E500";"M002";-50;15;"Invalido"
+#	The following data was added on Tue Oct 20 00:53:14 WEST 2026.
+"2609397";"REF-D400";"M01";500;12;"Invalido"
+"2609398";"REF-E500";"M002";-50;15;"Invalido"
+"2609401";"REF-12";"M002";300;15;"Invalido"
+"260940";"REF-H800";"M001";300;12;"Invalido"
+"2609403";"REF-J900";"M003";250;0;"Invalido"
+#	The following data was added on Tue Oct 20 20:07:23 WEST 2026.
+"2609397";"REF-D400";"M01";500;12;"Invalido"
+"2609398";"REF-E500";"M002";-50;15;"Invalido"
+"2609401";"REF-12";"M002";300;15;"Invalido"
+"260940";"REF-H800";"M001";300;12;"Invalido"
+"2609403";"REF-J900";"M003";250;0;"Invalido"
+#	The following data was added on Wed Oct 21 23:46:59 WEST 2026.
+"2609397";"REF-D400";"M01";500;12;"Invalido"
+"2609398";"REF-E500";"M002";-50;15;"Invalido"
+"2609401";"REF-12";"M002";300;15;"Invalido"
+"260940";"REF-H800";"M001";300;12;"Invalido"
+"2609403";"REF-J900";"M003";250;0;"Invalido"
+#	The following data was added on Thu Oct 22 00:01:02 WEST 2026.
+"2609397";"REF-D400";"M01";500;12;"Invalido"
+"2609398";"REF-E500";"M002";-50;15;"Invalido"
+"2609401";"REF-12";"M002";300;15;"Invalido"
+"260940";"REF-H800";"M001";300;12;"Invalido"
+"2609403";"REF-J900";"M003";250;0;"Invalido"

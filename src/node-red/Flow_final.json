@@ -1,0 +1,237 @@
+[
+    {
+        "id": "392a914e602eee08",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": [
+            {
+                "name": "PROJETO_DIR",
+                "value": "C:/Users/Nuno/Desktop/Projeto_isi",
+                "type": "str"
+            }
+        ]
+    },
+    {
+        "id": "3ad7148e58292c05",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "localhost",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "Producao",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "userFieldType": "cred",
+        "userEnv": "",
+        "passwordFieldType": "cred",
+        "passwordEnv": ""
+    },
+    {
+        "id": "0ecd284ff789c499",
+        "type": "postgresql",
+        "z": "392a914e602eee08",
+        "name": "Insere Dados",
+        "query": "INSERT INTO eventos_producao (\n    maquina_id,\n    data_hora,\n    data_fim,\n    estado,\n    tipo_evento,\n    pecas_produzidas,\n    pecas_rejeitadas,\n    codigo_op,\n    motivo,\n    tempo_espera_segundos,\n    tempo_intervencao_segundos,\n    operador_id\n)\nVALUES (\n    $1, $2, $3, $4, $5, $6,\n    $7, $8, $9, $10, $11, $12\n)\nRETURNING\n    id,\n    maquina_id,\n    operador_id,\n    estado,\n    tipo_evento,\n    pecas_produzidas,\n    pecas_rejeitadas;",
+        "postgreSQLConfig": "3ad7148e58292c05",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 670,
+        "y": 320,
+        "wires": [
+            [
+                "0520371485243eba"
+            ]
+        ]
+    },
+    {
+        "id": "0520371485243eba",
+        "type": "debug",
+        "z": "392a914e602eee08",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "1d8bab75d85ed6fb",
+        "type": "inject",
+        "z": "392a914e602eee08",
+        "name": "",
+        "props": [],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "bc8838b1a0f1d9a8"
+            ]
+        ]
+    },
+    {
+        "id": "0eb7b409ece0c979",
+        "type": "function",
+        "z": "392a914e602eee08",
+        "name": "function 1",
+        "func": "const ponto = flow.get(\"ponto\") || {};\nconst operadoresDisponiveis = (msg.payload || []).filter(o => ponto[o.codigo_operador] === \"dentro\");\nif (!Array.isArray(operadoresDisponiveis) ||\n    operadoresDisponiveis.length === 0) {\n    node.warn(\"Sem operadores dentro do horário. Evento não criado.\");\n    return null;\n}\n\nconst maquinas = [\n    { maquina: \"M001\", op: \"2609394\", ciclo: 12 },\n    { maquina: \"M002\", op: \"2609395\", ciclo: 15 },\n    { maquina: \"M003\", op: \"2609396\", ciclo: 20 }\n];\n\nconst DURACAO_EVENTO = 60;\n\nconst selecionada =\n    maquinas[Math.floor(Math.random() * maquinas.length)];\n\nconst operador =\n    operadoresDisponiveis[\n    Math.floor(Math.random() * operadoresDisponiveis.length)\n    ];\n\nconst tipos = [\"PRODUCAO\", \"PARAGEM\", \"MANUTENCAO\"];\nconst tipo = tipos[Math.floor(Math.random() * tipos.length)];\n\nconst fim = new Date();\nconst inicio = new Date(fim.getTime() - DURACAO_EVENTO * 1000);\n\nlet estado;\nlet motivo = null;\nlet produzidas = 0;\nlet rejeitadas = 0;\nlet espera = 0;\nlet intervencao = 0;\n\nif (tipo === \"PRODUCAO\") {\n    estado = \"PRODUCAO\";\n    const maximo = Math.floor(DURACAO_EVENTO / selecionada.ciclo);\n    produzidas = Math.max(1, Math.round(maximo * (0.6 + Math.random() * 0.4)));\n    for (let i = 0; i < produzidas; i++) {\n        if (Math.random() < 0.10) rejeitadas++;\n    }\n} else if (tipo === \"PARAGEM\") {\n    estado = \"PARADA\";\n    motivo = \"Avaria simulada\";\n    espera = 60;\n} else {\n    estado = \"MANUTENCAO\";\n    motivo = \"Manutencao preventiva simulada\";\n    intervencao = 60;\n}\n\nmsg.params = [\n    selecionada.maquina,\n    inicio,\n    fim,\n    estado,\n    tipo,\n    produzidas,\n    rejeitadas,\n    selecionada.op,\n    motivo,\n    espera,\n    intervencao,\n    operador.id\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 320,
+        "wires": [
+            [
+                "0ecd284ff789c499"
+            ]
+        ]
+    },
+    {
+        "id": "bc8838b1a0f1d9a8",
+        "type": "postgresql",
+        "z": "392a914e602eee08",
+        "name": "consulta_operadores",
+        "query": "SELECT id, codigo_operador, nome\nFROM operadores\nWHERE ativo;",
+        "postgreSQLConfig": "3ad7148e58292c05",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 280,
+        "y": 320,
+        "wires": [
+            [
+                "0eb7b409ece0c979"
+            ]
+        ]
+    },
+    {
+        "id": "rp3_inject",
+        "type": "inject",
+        "z": "392a914e602eee08",
+        "name": "A cada minuto",
+        "props": [],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "rp3_query"
+            ]
+        ]
+    },
+    {
+        "id": "rp3_query",
+        "type": "postgresql",
+        "z": "392a914e602eee08",
+        "name": "consulta_horarios",
+        "query": "SELECT\n    o.codigo_operador,\n    TO_CHAR(h.hora_inicio, 'HH24:MI') AS inicio,\n    TO_CHAR(h.hora_fim, 'HH24:MI') AS fim,\n    h.pausa_minutos\nFROM operadores o\nJOIN horarios h ON h.id = o.horario_id\nWHERE o.ativo = TRUE\n  AND h.ativo = TRUE;",
+        "postgreSQLConfig": "3ad7148e58292c05",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 320,
+        "y": 460,
+        "wires": [
+            [
+                "rp3_func"
+            ]
+        ]
+    },
+    {
+        "id": "rp3_func",
+        "type": "function",
+        "z": "392a914e602eee08",
+        "name": "Relógio de ponto",
+        "func": "// pasta do projeto: variável de ambiente PROJETO_DIR do separador (Flow 1 > Properties > Environment)\nconst CSV = env.get(\"PROJETO_DIR\") + \"/data/input/picagens.csv\";\nconst PAUSAS = {                 // pela hora de início do horário\n    \"06:30\": [\"11:00\", \"11:30\"], // Turno 1\n    \"14:30\": [\"19:00\", \"19:30\"], // Turno 2\n    \"22:30\": [\"02:00\", \"02:30\"], // Turno 3\n    \"08:00\": [\"12:30\", \"13:20\"]  // Horario8H\n};\n\nconst DIA = 24 * 60;\nconst minutos = hhmm => { const [h, m] = hhmm.split(\":\").map(Number); return h * 60 + m; };\nconst norm = m => ((m % DIA) + DIA) % DIA;\nconst dentro = (agora, i, f) => (i <= f ? agora >= i && agora < f : agora >= i || agora < f);\nconst p2 = n => String(n).padStart(2, \"0\");\nconst formatar = d => `${p2(d.getDate())}/${p2(d.getMonth() + 1)}/${d.getFullYear()} ${p2(d.getHours())}:${p2(d.getMinutes())}`;\n// primeira vez, depois de 'depois', em que o relógio marca 'minuto'\nfunction proxima(depois, minuto) {\n    const d = new Date(depois.getTime());\n    d.setHours(Math.floor(minuto / 60), minuto % 60, 0, 0);\n    if (d <= depois) d.setDate(d.getDate() + 1);\n    return d;\n}\n\n// 1. última picagem de cada operador, lida do CSV\nconst ultima = {};\nlet texto = \"\";\ntry { texto = fs.readFileSync(CSV, \"utf8\"); } catch (e) { node.warn(\"Não consegui ler \" + CSV); }\nfor (const linha of texto.split(/\\r?\\n/)) {\n    const m = linha.match(/^(\\d+);(\\d{2})\\/(\\d{2})\\/(\\d{4}) (\\d{2}):(\\d{2});(ENTRADA|SAIDA)$/);\n    if (!m) continue;\n    const quando = new Date(+m[4], +m[3] - 1, +m[2], +m[5], +m[6]);\n    if (!ultima[m[1]] || quando >= ultima[m[1]].quando) ultima[m[1]] = { tipo: m[7], quando };\n}\n\n// 2. decidir as picagens deste minuto\nconst operadores = Array.isArray(msg.payload) ? msg.payload : [];\nconst agoraData = new Date();\nagoraData.setSeconds(0, 0);\nconst agora = agoraData.getHours() * 60 + agoraData.getMinutes();\nconst linhas = [];\nconst ponto = {};\n\nfor (const op of operadores) {\n    const c = op.codigo_operador;\n    const inicio = minutos(op.inicio), fim = minutos(op.fim);\n    const entrada = norm(inicio - 2), saida = norm(fim + 2);\n    let pIni = null, pFim = null;\n    if (op.pausa_minutos > 0) {\n        if (PAUSAS[op.inicio]) [pIni, pFim] = PAUSAS[op.inicio].map(minutos);\n        else { pIni = norm(inicio + Math.round((norm(fim - inicio) - op.pausa_minutos) / 2)); pFim = norm(pIni + op.pausa_minutos); }\n    }\n    const deveTrabalhar = dentro(agora, entrada, saida) && !(pIni !== null && dentro(agora, pIni, pFim));\n    let estaDentro = ultima[c] && ultima[c].tipo === \"ENTRADA\";\n\n    // estava dentro: já passou a fronteira de saída (pausa ou fim do turno)?\n    if (estaDentro) {\n        const desde = ultima[c].quando;\n        let fronteira = proxima(desde, saida);\n        if (pIni !== null) { const p = proxima(desde, pIni); if (p < fronteira) fronteira = p; }\n        if (agoraData >= fronteira) {\n            linhas.push(`${c};${formatar(fronteira)};SAIDA`);\n            estaDentro = false;\n        }\n    }\n    // está fora e devia estar a trabalhar: pica a entrada agora (atrasada, se for o caso)\n    if (!estaDentro && deveTrabalhar) {\n        linhas.push(`${c};${formatar(agoraData)};ENTRADA`);\n        estaDentro = true;\n    }\n    if (estaDentro) ponto[c] = \"dentro\";\n}\n// operadores desativados que ficaram dentro: picam a saída agora\nfor (const c of Object.keys(ultima)) {\n    if (ultima[c].tipo === \"ENTRADA\" && !operadores.some(o => o.codigo_operador === c)) {\n        linhas.push(`${c};${formatar(agoraData)};SAIDA`);\n    }\n}\n\nflow.set(\"ponto\", ponto);   // o simulador (function 1) só gera eventos para quem está dentro\nnode.status({ text: \"dentro: \" + (Object.keys(ponto).join(\", \") || \"ninguém\") });\nif (linhas.length === 0) return null;\nreturn [linhas.map(l => ({ payload: l, filename: CSV }))];   // o nó seguinte escreve no mesmo ficheiro\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 530,
+        "y": 460,
+        "wires": [
+            [
+                "rp3_file",
+                "rp3_debug"
+            ]
+        ]
+    },
+    {
+        "id": "rp3_file",
+        "type": "file",
+        "z": "392a914e602eee08",
+        "name": "Acrescenta ao picagens.csv",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 780,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "rp3_debug",
+        "type": "debug",
+        "z": "392a914e602eee08",
+        "name": "Picagens geradas",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "7194f3d2ad40c518",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-postgresql": "0.16.2"
+        }
+    }
+]

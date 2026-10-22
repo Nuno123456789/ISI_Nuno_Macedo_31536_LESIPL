@@ -1,0 +1,25 @@
+# Grafana para os dashboards do projeto ISI (monitorização da produção)
+# Arrancar:  docker compose up -d      (nesta pasta)
+# Abrir:     http://localhost:3000     (admin / admin na primeira entrada)
+# Parar:     docker compose down       (os dashboards ficam guardados no volume grafana_data)
+#
+# O PostgreSQL corre no Windows (serviço postgresql-x64-18). Dentro do contentor,
+# o Windows é acessível pelo nome host.docker.internal (porta 5432).
+
+services:
+  grafana:
+    image: grafana/grafana:11.2.0
+    container_name: grafana_isi
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+
+volumes:
+  grafana_data:

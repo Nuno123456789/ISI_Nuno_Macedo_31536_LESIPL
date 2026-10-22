@@ -1,0 +1,34 @@
+#	This file was created on Sat Oct 17 12:25:40 WEST 2026.
+"codigo_maquina";"data";"hora_inicio";"hora_fim";"tipo";"prioridade";"estado";"descricao";"validacao_manutencao"
+#	The following data was added on Sat Oct 17 13:57:19 WEST 2026.
+#	The following data was added on Sat Oct 17 14:04:56 WEST 2026.
+#	The following data was added on Sat Oct 17 14:08:30 WEST 2026.
+#	The following data was added on Sat Oct 17 17:46:41 WEST 2026.
+#	The following data was added on Mon Oct 19 18:46:19 WEST 2026.
+#	The following data was added on Tue Oct 20 00:37:43 WEST 2026.
+"M002";"2026-10-20";"25:00";"25:30";"Preventiva";"Media";"Planeada";"Hora invalida";"Invalido"
+"M001";"2026-10-20";"10:00";"10:30";"Corretiva";"Urgente";"Planeada";"Prioridade invalida";"Invalido"
+#	The following data was added on Tue Oct 20 00:53:14 WEST 2026.
+"M002";"2026-10-20";"25:00";"25:30";"Preventiva";"Media";"Planeada";"Hora invalida";"Invalido"
+"M001";"2026-10-20";"10:00";"10:30";"Corretiva";"Urgente";"Planeada";"Prioridade invalida";"Invalido"
+"MX01";"2026-10-21";"11:00";"11:30";"Preventiva";"Media";"Planeada";"Maquina invalida";"Invalido"
+"M001";"2026-10-22";"16:00";"16:30";"Preventiva";"Baixa";"Feito";"Estado invalido";"Invalido"
+"M003";"20/10/2026";"10:00";"10:20";"Corretiva";"Alta";"Planeada";"Data em formato errado";"Invalido"
+#	The following data was added on Tue Oct 20 20:07:23 WEST 2026.
+"M002";"2026-10-20";"25:00";"25:30";"Preventiva";"Media";"Planeada";"Hora invalida";"Invalido"
+"M001";"2026-10-20";"10:00";"10:30";"Corretiva";"Urgente";"Planeada";"Prioridade invalida";"Invalido"
+"MX01";"2026-10-21";"11:00";"11:30";"Preventiva";"Media";"Planeada";"Maquina invalida";"Invalido"
+"M001";"2026-10-22";"16:00";"16:30";"Preventiva";"Baixa";"Feito";"Estado invalido";"Invalido"
+"M003";"20/10/2026";"10:00";"10:20";"Corretiva";"Alta";"Planeada";"Data em formato errado";"Invalido"
+#	The following data was added on Wed Oct 21 23:46:59 WEST 2026.
+"M002";"2026-10-20";"25:00";"25:30";"Preventiva";"Media";"Planeada";"Hora invalida";"Invalido"
+"M001";"2026-10-20";"10:00";"10:30";"Corretiva";"Urgente";"Planeada";"Prioridade invalida";"Invalido"
+"MX01";"2026-10-21";"11:00";"11:30";"Preventiva";"Media";"Planeada";"Maquina invalida";"Invalido"
+"M001";"2026-10-22";"16:00";"16:30";"Preventiva";"Baixa";"Feito";"Estado invalido";"Invalido"
+"M003";"20/10/2026";"10:00";"10:20";"Corretiva";"Alta";"Planeada";"Data em formato errado";"Invalido"
+#	The following data was added on Thu Oct 22 00:01:02 WEST 2026.
+"M002";"2026-10-20";"25:00";"25:30";"Preventiva";"Media";"Planeada";"Hora invalida";"Invalido"
+"M001";"2026-10-20";"10:00";"10:30";"Corretiva";"Urgente";"Planeada";"Prioridade invalida";"Invalido"
+"MX01";"2026-10-21";"11:00";"11:30";"Preventiva";"Media";"Planeada";"Maquina invalida";"Invalido"
+"M001";"2026-10-22";"16:00";"16:30";"Preventiva";"Baixa";"Feito";"Estado invalido";"Invalido"
+"M003";"20/10/2026";"10:00";"10:20";"Corretiva";"Alta";"Planeada";"Data em formato errado";"Invalido"

@@ -1,0 +1,72 @@
+[
+  {
+    "codigo_op": "2609394",
+    "referencia": "REF-A100",
+    "codigo_maquina": "M001",
+    "quantidade_planeada": 1000,
+    "ciclo_ideal_segundos": 12
+  },
+  {
+    "codigo_op": "2609395",
+    "referencia": "REF-B200",
+    "codigo_maquina": "M002",
+    "quantidade_planeada": 800,
+    "ciclo_ideal_segundos": 15
+  },
+  {
+    "codigo_op": "2609396",
+    "referencia": "REF-C300",
+    "codigo_maquina": "M003",
+    "quantidade_planeada": 600,
+    "ciclo_ideal_segundos": 20
+  },
+  {
+    "codigo_op": "2609397",
+    "referencia": "REF-D400",
+    "codigo_maquina": "M01",
+    "quantidade_planeada": 500,
+    "ciclo_ideal_segundos": 12
+  },
+  {
+    "codigo_op": "2609398",
+    "referencia": "REF-E500",
+    "codigo_maquina": "M002",
+    "quantidade_planeada": -50,
+    "ciclo_ideal_segundos": 15
+  },
+  {
+    "codigo_op": "2609399",
+    "referencia": "REF-F600",
+    "codigo_maquina": "M001",
+    "quantidade_planeada": 1200,
+    "ciclo_ideal_segundos": 12
+  },
+  {
+    "codigo_op": "2609400",
+    "referencia": "REF-G700",
+    "codigo_maquina": "M003",
+    "quantidade_planeada": 400,
+    "ciclo_ideal_segundos": 20
+  },
+  {
+    "codigo_op": "2609401",
+    "referencia": "REF-12",
+    "codigo_maquina": "M002",
+    "quantidade_planeada": 300,
+    "ciclo_ideal_segundos": 15
+  },
+  {
+    "codigo_op": "260940",
+    "referencia": "REF-H800",
+    "codigo_maquina": "M001",
+    "quantidade_planeada": 300,
+    "ciclo_ideal_segundos": 12
+  },
+  {
+    "codigo_op": "2609403",
+    "referencia": "REF-J900",
+    "codigo_maquina": "M003",
+    "quantidade_planeada": 250,
+    "ciclo_ideal_segundos": 0
+  }
+]
